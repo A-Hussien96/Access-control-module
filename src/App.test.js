@@ -52,3 +52,15 @@ test('Conditional access 2', () => {
     deleteRole('admin');
     deleteRole('guest')
 });
+
+test('Test non existing role', () => {
+    let checker = check.if('nonexisting').can('post').to('/users/10/articles').isValid;
+    expect(checker).toBe(false)
+});
+
+test('Test non existing verb', () => {
+    createRole('user');
+    a('user').can('nonexisting').from('/users');
+    let checker = check.if('user').can('nonexisting').from('/users').isValid;
+    expect(checker).toBe(false)
+});

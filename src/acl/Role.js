@@ -10,13 +10,15 @@ export class Role {
             'put': new Verb('put')}
     }
     addVerb (verb) {
-        //TODO check if null
-        verb = verb.toLowerCase();
-        if(this.verbs.hasOwnProperty(verb)){
-            return this.verbs[verb];
-        } else {
-            //TODO alert error
+        if(verb){
+            verb = verb.trim().toLowerCase();
+            if(this.verbs.hasOwnProperty(verb)){
+                return this.verbs[verb];
+            } else {
+                return new Verb("")
+            }
         }
+        return new Verb("")
     }
     can = this.addVerb;
 }

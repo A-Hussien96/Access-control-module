@@ -8,7 +8,6 @@ export class Verb {
 
     addEndPoint(endpoint){
         let parameters = this.extractParams(endpoint);
-        //TODO check if already found endpoint
         this.endpoints[endpoint] = new Condition(parameters);
         return this.endpoints[endpoint];
     }
